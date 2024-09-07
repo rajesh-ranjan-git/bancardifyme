@@ -28,7 +28,6 @@ export async function createAdminClient() {
     .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT!)
     .setKey(process.env.NEXT_APPWRITE_KEY!);
 
-  console.log("client : ", client);
   return {
     get account() {
       return new Account(client);
