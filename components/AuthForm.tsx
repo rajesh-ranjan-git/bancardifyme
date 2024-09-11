@@ -13,6 +13,7 @@ import { authFormSchema } from "@/lib/utils";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { signIn, signUp } from "@/lib/actions/user.actions";
+import PlaidLink from "./PlaidLink";
 
 const AuthForm = ({ type }: { type: string }) => {
   const router = useRouter();
@@ -30,7 +31,8 @@ const AuthForm = ({ type }: { type: string }) => {
       address1: "",
       city: "",
       state: "",
-      pinCode: "",
+      postalCode: "",
+      ssn: "",
       email: "",
       dateOfBirth: "",
       password: "",
@@ -43,8 +45,22 @@ const AuthForm = ({ type }: { type: string }) => {
     // ✅ This will be type-safe and validated.
     setIsLoading(true);
     try {
+      // Sign up with Appwrite & create plaid token
+
       if (type === "sign-up") {
-        const newUser = await signUp(data);
+        const userData = {
+          firstName: data.firstName!,
+          lastName: data.lastName!,
+          address1: data.address1!,
+          city: data.city!,
+          state: data.state!,
+          postalCode: data.postalCode!,
+          ssn: data.ssn!,
+          dateOfBirth: data.dateOfBirth!,
+          email: data.email,
+          password: data.password,
+        };
+        const newUser = await signUp(userData);
         setUser(newUser);
       } else if (type === "sign-in") {
         const response = await signIn({
@@ -90,7 +106,9 @@ const AuthForm = ({ type }: { type: string }) => {
       </header>
 
       {user ? (
-        <div className="flex flex-col gap-4">{/* PlaidLink */}</div>
+        <div className="flex flex-col gap-4">
+          <PlaidLink user={user} variant="primary" />
+        </div>
       ) : (
         <>
           <Form {...form}>
@@ -132,17 +150,25 @@ const AuthForm = ({ type }: { type: string }) => {
                     />
                     <CustomInput
                       control={form.control}
-                      name="pinCode"
-                      label="Pin Code"
+                      name="postalCode"
+                      label="Postal Code"
                       placeholder="Ex: 111111"
                     />
                   </div>
-                  <CustomInput
-                    control={form.control}
-                    name="dateOfBirth"
-                    label="Date of Birth"
-                    placeholder="YYYY-MM-DD"
-                  />
+                  <div className="flex gap-4">
+                    <CustomInput
+                      control={form.control}
+                      name="dateOfBirth"
+                      label="Date of Birth"
+                      placeholder="YYYY-MM-DD"
+                    />
+                    <CustomInput
+                      control={form.control}
+                      name="ssn"
+                      label="SSN"
+                      placeholder="Ex: 1111"
+                    />
+                  </div>
                 </>
               )}
               <CustomInput
