@@ -7,19 +7,18 @@ import React from "react";
 Chart.register(ArcElement);
 
 const DoughnutChart = ({ accounts }: DoughnutChartProps) => {
+  const accountNames = accounts.map((a) => a.name);
+  const balances = accounts.map((a) => a.currentBalance);
+
   const data = {
     datasets: [
       {
         label: "Banks",
-        data: [65741, 54535, 26821],
+        data: balances,
         backgroundColor: ["#0747b6", "#2265d8", "#2f91fa"],
       },
     ],
-    labels: [
-      "Kotak Mahindra Bank",
-      "Central Bank of India",
-      "State Bank of India",
-    ],
+    labels: accountNames,
   };
   return (
     <Doughnut
