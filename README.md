@@ -11,6 +11,7 @@ Welcome to BancardifyMe! This is a modern finance/banking dashboard platform bui
 - [Installation Guide](#installation-guide)
 - [Environment Variables](#environment-variables)
 - [Running Locally](#running-locally)
+- [Usage](#usage)
 - [Build](#build)
 - [Scripts](#scripts)
 - [Deployment](#deployment)
@@ -133,6 +134,16 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser. You can start editing the dashboard by modifying `app/(root)/page.tsx`; the page auto-updates as you edit.
+
+## Usage
+
+1. **Sign up / Sign in** — Create an account or log in from the `/sign-up` or `/sign-in` pages. Sessions are managed by Appwrite.
+2. **Link a bank account** — From the dashboard, use the Plaid Link button to securely connect a bank account (use Plaid's Sandbox test credentials in development).
+3. **View your dashboard** — See your total balance, an animated summary of balances by bank, and recent transactions on the home page.
+4. **My Banks** — Go to `/my-banks` to see all linked bank accounts and their individual details.
+5. **Transaction History** — Go to `/transaction-history` to browse the full, paginated transaction history for a selected bank.
+6. **Transfer funds** — Go to `/payment-transfer` to send money between accounts; transfers are processed through Dwolla.
+7. **Sign out** — End your session from the sidebar/footer sign-out action.
 
 ## Build
 
