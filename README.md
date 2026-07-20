@@ -1,6 +1,6 @@
-# bancardifyme
+# BancardifyMe
 
-Welcome to bancardifyme! This is a modern finance/banking dashboard platform built with Next.js, giving users a unified view of their bank accounts, transactions, and payment transfers.
+Welcome to BancardifyMe! This is a modern finance/banking dashboard platform built with Next.js, giving users a unified view of their bank accounts, transactions, and payment transfers.
 
 ## Table of Contents
 
@@ -18,7 +18,7 @@ Welcome to bancardifyme! This is a modern finance/banking dashboard platform bui
 
 ## Project Overview
 
-bancardifyme is a Next.js (App Router) banking dashboard. Users sign up / sign in, securely link their real bank accounts via Plaid, view balances and recent transactions across linked banks, transfer funds between accounts using Dwolla, and track their full transaction history.
+BancardifyMe is a Next.js (App Router) banking dashboard. Users sign up / sign in, securely link their real bank accounts via Plaid, view balances and recent transactions across linked banks, transfer funds between accounts using Dwolla, and track their full transaction history.
 
 ## Features
 
